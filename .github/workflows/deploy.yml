@@ -3,24 +3,24 @@ name: 🚀 Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
-  deploy:
-    name: Deploy site to GitHub Pages
+  create-pull-request:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📦 Checkout repository
+      - name: 📦 Checkout develop
         uses: actions/checkout@v3
-
-      - name: 🧹 Clean previous build artifacts (optional)
-        run: |
-          rm -rf node_modules
-          rm -rf dist
-
-      - name: 🌐 Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          ref: develop
+
+      - name: 🔁 Create PR to main using latest commit
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          branch: develop
+          title: ${{ github.event.head_commit.message }}
+          body: ${{ github.event.head_commit.message }}
+          reviewers: Manaj93
