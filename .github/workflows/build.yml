@@ -1,4 +1,4 @@
-name: Build and Verify
+name: 🛠️ Build and Verify
 
 on:
   push:
@@ -8,13 +8,21 @@ on:
 
 jobs:
   verify:
+    name: Verify project structure
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: 📦 Checkout code
         uses: actions/checkout@v3
 
-      - name: List project files
+      - name: 📁 List project files
         run: ls -la
 
-      - name: Check for index.html
-        run: test -f index.html && echo "index.html found" || (echo "index.html missing" && exit 1)
+      - name: ✅ Check for index.html
+        run: |
+          if [ -f index.html ]; then
+            echo "✅ index.html found"
+          else
+            echo "❌ index.html missing"
+            exit 1
+          fi

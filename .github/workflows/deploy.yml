@@ -1,19 +1,31 @@
-name: Deploy to GitHub Pages
+name: 🔁 Auto PR from develop to main
 
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
-  deploy:
+  create-pull-request:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+    steps:
+      - name: 📦 Checkout develop
+        uses: actions/checkout@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          ref: develop
+
+      - name: 🔁 Create PR to main
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          branch: auto-pr-${{ github.sha }}
+          title: "Auto PR: ${{ github.event.head_commit.message }}"
+          body: |
+            This PR was automatically generated from the latest commit on `develop`.
+
+            Commit: ${{ github.event.head_commit.message }}
+          reviewers: Manaj93
+          commit-message: "chore: auto PR from develop to main"
+          path: .
