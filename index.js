@@ -41,8 +41,17 @@ image.src = './img/Pellet Town.png'
 const forgroundImage = new Image()
 forgroundImage.src = './img/foregroundObjects.png'
 
-const playerImage = new Image()
-playerImage.src = './img/playerDown.png'
+const playerUpImage = new Image()
+playerUpImage.src = './img/playerUp.png'
+
+const playerDownImage = new Image()
+playerDownImage.src = './img/playerDown.png'
+
+const playerLeftImage = new Image()
+playerLeftImage.src = './img/playerLeft.png'
+
+const playerRightImage = new Image()
+playerRightImage.src = './img/playerRight.png'
 
 
 
@@ -54,9 +63,15 @@ const player = new Sprite ({
 		y: canvas.height / 2 - 68 / 2,
 
 	},
-	image: playerImage,
+	image: playerDownImage,
 	frames: {
 		max: 4
+	},
+	sprites: {
+		up: playerUpImage,
+		down: playerDownImage,
+		left: playerLeftImage,
+		right: playerRightImage,
 	}
 })
 const background = new Sprite({
@@ -110,7 +125,10 @@ function animate(){
 	foreground.draw()
 
 	let moving = true
+	player.moving = false
 	if (keys.w.pressed && lastKey === 'w') {
+		player.moving = true
+		player.image = player.sprites.up
 		for (let i = 0; i < boundaries.length; i++){
 			const boundary = boundaries[i]
 			if (
@@ -132,6 +150,8 @@ function animate(){
 		movables.forEach(movable =>{movable.position.y += 3})
 	}
 	else if (keys.s.pressed && lastKey === 's') {
+		player.moving = true
+		player.image = player.sprites.down
 		for (let i = 0; i < boundaries.length; i++){
 			const boundary = boundaries[i]
 			if (
@@ -153,6 +173,8 @@ function animate(){
 		movables.forEach(movable =>{movable.position.y -= 3})
 	}
 	else if (keys.a.pressed && lastKey === 'a') {
+		player.moving = true
+		player.image = player.sprites.left
 		for (let i = 0; i < boundaries.length; i++){
 			const boundary = boundaries[i]
 			if (
@@ -173,7 +195,10 @@ function animate(){
 		if (moving)
 		movables.forEach(movable =>{movable.position.x += 3})
 	}
-	else if (keys.d.pressed && lastKey === 'd') {for (let i = 0; i < boundaries.length; i++){
+	else if (keys.d.pressed && lastKey === 'd') {
+		player.moving = true
+		player.image = player.sprites.right
+		for (let i = 0; i < boundaries.length; i++){
 			const boundary = boundaries[i]
 			if (
 				rectangularCollision({
