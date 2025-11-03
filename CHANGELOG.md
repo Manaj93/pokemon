@@ -18,3 +18,14 @@
 
 **Notes**
 - This version introduces core gameplay mechanics and sets the foundation for interactive map navigation
+
+## [v0.3.0-alpha] – 2025-11-03  
+⚔️ First Encounter – Battle activation logic introduced
+
+**Added**
+- Battle zone parsing from `battleZonesData` into a 2D grid (`battleZonesMap`)
+- Dynamic battle zone generation using `Boundary` objects based on map symbols
+- Collision detection between player and battle zones
+- Battle trigger logic based on overlapping area threshold
+
+
