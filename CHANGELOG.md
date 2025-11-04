@@ -28,4 +28,26 @@
 - Collision detection between player and battle zones
 - Battle trigger logic based on overlapping area threshold
 
+## [v0.3.0-beta] – 2025-11-04  
+⚔️ Battle Begins – Transition system from map to battle sequence implemented
+
+**Added**
+- Battle zone detection using `battleZonesMap` and randomized encounter trigger
+- Animated transition overlay with GSAP (`#overlappingDiv`) for battle entry effect
+- `battle.initiated` flag to control animation flow and prevent movement during transition
+`animateBattle()` placeholder for future battle loop logic
+- Inline code comments for improved readability and maintainability
+
+README updated to reflect new battle transition feature
+
+**Changed**
+Refactored animation loop to support battle handoff and cancel frame logic
+
+Movement logic gated by battle state to prevent unintended input during transition
+
+**Fixed**
+Character freeze issue after triggering battle due to premature animation loop exit
+
+**Notes**
+This version introduces the first step toward a full battle system, laying groundwork for enemy logic and UI elements
 

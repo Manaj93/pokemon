@@ -9,13 +9,15 @@ This project recreates a classic Pokémon-style environment using a single map a
 - Smooth player movement and collision detection
 - Foreground and background layers for visual depth
 - Modular class structure for sprites and boundaries
+- Battle zone detection and animated transition into battle mode
 
 ## 🧰 Technologies Used
 
 - HTML5 Canvas
 - Vanilla JavaScript
 - CSS
-- Tiled 
+- GSAP (for battle transition animations)
+- Tiled (for map design)
 
 ## 📁 Project Structure
 
@@ -26,7 +28,8 @@ pokemon/
 ├── index.js
 ├── classes.js
 ├── data/
-│   └── collisions.js
+│   ├── collisions.js
+│   └── battleZones.js
 ├── img/
 │   ├── Pellet Town.png
 │   ├── foregroundObjects.png
@@ -58,8 +61,11 @@ pokemon/
 - Create a loading screen or splash intro before gameplay starts
 - Optimize performance for larger maps and multiple layers
 - Add support for multiple player directions (left, right, up) with corresponding sprites
+- Build out battle UI and enemy logic after transition
+- Add health bars, turn-based actions, and win/loss conditions
 
 ## 📸 Credits
 
 - Map created in Tiled and exported as PNG
 - Sprites inspired by classic Pokémon assets
+
