@@ -1,4 +1,22 @@
-/*default style settings like margin*/
-	body {
-		background-color: black;
-	}
+/* Default style settings */
+body {
+  background-color: black;
+}
+
+/* Container around canvas and overlapping div */
+.canvas-container {
+  display: inline-block;
+  position: relative;
+}
+
+/* Battle transition overlay */
+#overlappingDiv {
+  position: absolute;
+  background-color: blueviolet;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+}
