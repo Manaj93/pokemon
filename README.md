@@ -1,6 +1,6 @@
 # Pokémon
 
-A 2D Pokémon-style browser game built with HTML, CSS, JavaScript, and Tiled.
+A 2D Pokémon-style browser game built with HTML, CSS, JavaScript, Gsap and Tiled.
 
 ## 🎮 Overview
 
@@ -10,6 +10,7 @@ This project recreates a classic Pokémon-style environment using a single map a
 - Foreground and background layers for visual depth
 - Modular class structure for sprites and boundaries
 - Battle zone detection and animated transition into battle mode
+- Battle UI with animated sprites, health bars, and attack interface
 
 ## 🧰 Technologies Used
 
@@ -37,13 +38,15 @@ pokemon/
 │   ├── playerLeft.png
 │   ├── playerRight.png
 │   ├── playerUp.png
+│   ├── battleBackground.png
+│   ├── draggleSprite.png
 ```
 
 ## 🚀 How to Run
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Manaj93/pokemon.git
+   git clone https://github.com/ManaJBin/pokemon.git
    cd pokemon
    ```
 
@@ -52,17 +55,9 @@ pokemon/
 ## 📝 To-Dos
 
 - Fix player sprite spacing: remove extra transparent padding around player image
-- Ensure all image assets are fully loaded before calling `animate()`
 - Refactor repetitive collision logic into a reusable helper function
-- Add walking animation frames for player movement
-- Add NPCs or interactive objects with basic collision and dialogue triggers
-- Implement map transitions (e.g., entering buildings or changing zones)
 - Add sound effects and background music for immersion
-- Create a loading screen or splash intro before gameplay starts
-- Optimize performance for larger maps and multiple layers
-- Add support for multiple player directions (left, right, up) with corresponding sprites
-- Build out battle UI and enemy logic after transition
-- Add health bars, turn-based actions, and win/loss conditions
+- Add turn-based actions, and win/loss conditions
 
 ## 📸 Credits
 

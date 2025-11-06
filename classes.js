@@ -4,8 +4,9 @@ class Sprite {
     position,       // Initial position on canvas
     velocity,       // Optional velocity (not used here but useful for future physics)
     image,          // Image source for the sprite
-    frames = { max: 1 }, // Frame data for animation (default: single frame)
-    sprites = [],   // Optional directional sprite set (up/down/left/right)
+    frames = { max: 1, hold: 10 }, // Frame data for animation (default: single frame)
+    sprites,		// Optional directional sprite set (up/down/left/right)
+	animate = false,   // Whether the sprite should animate (used for battle sprites and player movement)
   }) {
     this.position = position;
     this.image = image;
@@ -18,7 +19,8 @@ class Sprite {
       this.height = this.image.height;
     };
 
-    this.moving = false; // Controls whether animation should play
+    this.animate = animate;  // Controls whether animation should play
+	  this.sprites = sprites;
   }
 
   // Draw sprite on canvas and handle animation frames
@@ -36,7 +38,7 @@ class Sprite {
     );
 
     // Skip animation if not moving
-    if (!this.moving) return;
+    if (!this.animate) return;
 
     // Advance frame timing
     if (this.frames.max > 1) {
@@ -44,7 +46,7 @@ class Sprite {
     }
 
     // Change frame every 10 ticks
-    if (this.frames.elapsed % 10 === 0) {
+    if (this.frames.elapsed % this.frames.hold === 0) {
       if (this.frames.val < this.frames.max - 1) {
         this.frames.val++;
       } else {

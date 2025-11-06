@@ -90,6 +90,7 @@ const player = new Sprite({
   image: playerDownImage,
   frames: {
     max: 4,
+	hold: 10,
   },
   sprites: {
     up: playerUpImage,
@@ -152,7 +153,7 @@ function animate() {
   foreground.draw();
 
   let moving = true;
-  player.moving = false;
+  player.animate = false;
 
   // Stop movement if battle is active
   if (battle.initiated) return;
@@ -187,20 +188,27 @@ function animate() {
         window.cancelAnimationFrame(animationId);
         battle.initiated = true;
 
-        // Animate transition to battle
-        gsap.to('#overlappingDiv', {
-          opacity: 1,
-          duration: 0.4,
-          repeat: 3,
-          yoyo: true,
-          onComplete() {
-            gsap.to('#overlappingDiv', {
-              opacity: 1,
-              duration: 0.4,
-            });
-            animateBattle(); // Start battle animation loop
-          },
-        });
+    // Animate transition to battle
+		gsap.to('#overlappingDiv', {
+		opacity: 1,
+		duration: 0.4,
+		repeat: 3,
+		yoyo: true,
+		onComplete: () => {
+			gsap.to('#overlappingDiv', {
+			opacity: 1,
+			duration: 0.4,
+			onComplete: () => {
+				animateBattle();  // Start battle animation loop
+				gsap.to('#overlappingDiv', {
+				opacity: 0,
+				duration: 0.4
+				});
+			}
+			});
+		}
+		});
+
         break;
       }
     }
@@ -208,7 +216,7 @@ function animate() {
 
   // Movement logic with collision detection
   if (keys.w.pressed && lastKey === 'w') {
-    player.moving = true;
+    player.animate = true;
     player.image = player.sprites.up;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
@@ -230,7 +238,7 @@ function animate() {
     }
     if (moving) movables.forEach((movable) => (movable.position.y += 3));
   } else if (keys.s.pressed && lastKey === 's') {
-    player.moving = true;
+    player.animate = true;
     player.image = player.sprites.down;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
@@ -252,7 +260,7 @@ function animate() {
     }
     if (moving) movables.forEach((movable) => (movable.position.y -= 3));
   } else if (keys.a.pressed && lastKey === 'a') {
-    player.moving = true;
+    player.animate = true;
     player.image = player.sprites.left;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
@@ -274,7 +282,7 @@ function animate() {
     }
     if (moving) movables.forEach((movable) => (movable.position.x += 3));
   } else if (keys.d.pressed && lastKey === 'd') {
-    player.moving = true;
+    player.animate = true;
     player.image = player.sprites.right;
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
@@ -298,12 +306,61 @@ function animate() {
   }
 }
 
-animate();
+//animate();
 
-// Battle animation loop placeholder
+// Load battle background image
+const battleBackgroundImage = new Image();
+battleBackgroundImage.src = './img/battleBackground.png';
+
+const battleBackground = new Sprite({
+	  position: {
+			x: 0,
+			y: 0,	
+	  },
+	  image: battleBackgroundImage,
+})
+// Load enemy sprite (Draggle)
+const draggleImage = new Image();
+draggleImage.src = './img/draggleSprite.png';
+const draggle = new Sprite({
+	  position: {
+			x: 800,
+			y: 100,	
+	  },
+	  image: draggleImage,
+	  frames: {
+		max: 4,
+		hold: 30,
+	  },
+	  animate: true,
+})
+// Load player sprite (Emby)
+const embyImage = new Image();
+embyImage.src = './img/embySprite.png';
+const emby = new Sprite({
+	  position: {
+			x: 280,
+			y: 325,	
+	  },
+	  image: embyImage,
+	  frames: {
+		max: 4,
+		hold: 30,
+	  },
+	  animate: true,
+})
+
+// Battle animation loop: draws battle background and both sprites
 function animateBattle() {
   window.requestAnimationFrame(animateBattle);
+  battleBackground.draw();
+  draggle.draw();
+  emby.draw();
 }
+// Start battle animation loop (comment out if not in battle mode)
+//animate()
+animateBattle()
+
 
 // Track last key pressed for movement direction
 let lastKey = '';
@@ -325,6 +382,26 @@ window.addEventListener('keydown', (e) => {
       break;
     case 'd':
       keys.d.pressed = true;
+      lastKey = 'd';
+      break;
+  }
+});
+window.addEventListener('keyup', (e) => {
+  switch (e.key) {
+    case 'w':
+      keys.w.pressed = false;
+      lastKey = 'w';
+      break;
+    case 's':
+      keys.s.pressed = false;
+      lastKey = 's';
+      break;
+    case 'a':
+      keys.a.pressed = false;
+      lastKey = 'a';
+      break;
+    case 'd':
+      keys.d.pressed = false;
       lastKey = 'd';
       break;
   }
