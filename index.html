@@ -1,20 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pokemon</title>
-  <link rel="icon" href="img/favIcon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="icon" href="img/favIcon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="canvas-container">
-    <div id= "overlappingDiv">
-      
+    <div id="overlappingDiv"></div>
+
+    <div id="draggleHealthBar">
+      <h1>Draggle</h1>
+      <div class="health-bar">
+        <div class="bar-bg"></div>
+        <div class="bar-fill"></div>
+      </div>
     </div>
-  <canvas></canvas>
+
+    <canvas></canvas>
+
+    <div id="embyHealthBar">
+      <h1>Emby</h1>
+      <div class="health-bar">
+        <div class="bar-bg"></div>
+        <div class="bar-fill"></div>
+      </div>
+    </div>
+
+    <div id="AttackBar">
+      <div id="attackButtons">
+        <button>Attack1</button>
+        <button>Attack2</button>
+        <button>Attack3</button>
+        <button>Attack4</button>
+      </div>
+      <div id="attackType">
+        <h1>Attack Type</h1>
+      </div>
+    </div>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" crossorigin="anonymous"></script>
   <script src="data/battleZones.js"></script>
   <script src="data/collisions.js"></script>
   <script src="classes.js"></script>
