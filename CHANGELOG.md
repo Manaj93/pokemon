@@ -28,7 +28,7 @@
 - Collision detection between player and battle zones
 - Battle trigger logic based on overlapping area threshold
 
-## [v0.3.0-beta] – 2025-11-04  
+## [v0.3.0-beta] – 2025-11-06  
 ⚔️ Battle Begins – Transition system from map to battle sequence implemented
 
 **Added**
@@ -37,17 +37,21 @@
 - `battle.initiated` flag to control animation flow and prevent movement during transition
 `animateBattle()` placeholder for future battle loop logic
 - Inline code comments for improved readability and maintainability
-
-README updated to reflect new battle transition feature
+- README updated to reflect new battle transition feature
+- Battle background and animated sprites for Draggle and Emby
+- Health bar UI for both player and enemy
+- Attack bar interface with buttons and type display
+- External CSS styling for all battle UI components
 
 **Changed**
-Refactored animation loop to support battle handoff and cancel frame logic
-
-Movement logic gated by battle state to prevent unintended input during transition
+- Refactored animation loop to support battle handoff and cancel frame logic
+- Movement logic gated by battle state to prevent unintended input during transition
+- index.js updated to handle battle initiation and animation loop
+- index.html modified to support new battle UI structure
 
 **Fixed**
-Character freeze issue after triggering battle due to premature animation loop exit
+- Character freeze issue after triggering battle due to premature animation loop exit
 
 **Notes**
-This version introduces the first step toward a full battle system, laying groundwork for enemy logic and UI elements
+This version introduces the first step toward a full battle system, laying groundwork for enemy logic, UI elements, and future turn-based mechanics. While the UI is functional, battle logic is still under development.
 
