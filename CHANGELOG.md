@@ -1,32 +1,34 @@
-## [v0.2.1] – 2025-11-03  
-🎮 Game On – Player movement and collision system added
+## [v1.0] – 2025-11-07  
+🏆 Foundation Complete – Full battle system, audio integration, and NPC interaction
 
-**Added**
-- Player sprite system with directional animations (up, down, left, right)
-- Background and foreground rendering using layered `Sprite` objects
-- Collision detection system using `Boundary` class and `rectangularCollision()` logic
-- Movement controls via WASD keys with smooth camera scrolling
-- Map parsing from `collisions` array into a 2D grid (`collisionsMap`)
-- Dynamic boundary generation based on map symbols
+### Added
+- Turn-based battle logic with attack sequencing and health deduction
+- `Monster` class with `attack()` and `faint()` methods for both player and enemy
+- Animated attack effects: Fireball and Tackle with GSAP motion and impact feedback
+- Sound effects for battle initiation, attacks, hits, and victory using Howler.js
+- Background music for both map and battle scenes
+- NPC system with dialogue interaction via spacebar
+- `Character` class with dialogue index tracking and interaction state
+- `checkForCharacterCollision()` utility for NPC proximity detection
+- `utils.js` file for reusable collision logic
+- `attackType` UI display with dynamic color and type info
+- Modular folder structure for audio, data, images, and logic separation
 
-**Changed**
-- Canvas setup with fixed dimensions and white background fill
-- Sprite animation logic with frame cycling based on movement state
+### Changed
+- Refactored battle flow to use a `queue` system for sequential actions
+- Updated `README.md` with full feature summary and setup instructions
+- Improved sprite animation timing and frame control
+- Reorganized project structure to include `js/` folder for utilities
 
-**Fixed**
-- Placeholder for image spacing issue noted in TODO comment
+### Fixed
+- Image spacing and scaling issues for player and NPC sprites
+- UI layering bugs during battle transitions
+- Audio overlap between map and battle scenes
 
-**Notes**
-- This version introduces core gameplay mechanics and sets the foundation for interactive map navigation
+### Notes
+This release marks the completion of the foundational gameplay loop: exploration, interaction, and combat. The game now supports full battle mechanics, audio immersion, and character dialogue — ready for expansion into quests, leveling, and multi-map navigation.
 
-## [v0.3.0-alpha] – 2025-11-03  
-⚔️ First Encounter – Battle activation logic introduced
-
-**Added**
-- Battle zone parsing from `battleZonesData` into a 2D grid (`battleZonesMap`)
-- Dynamic battle zone generation using `Boundary` objects based on map symbols
-- Collision detection between player and battle zones
-- Battle trigger logic based on overlapping area threshold
+---
 
 ## [v0.3.0-beta] – 2025-11-06  
 ⚔️ Battle Begins – Transition system from map to battle sequence implemented
@@ -54,4 +56,39 @@
 
 **Notes**
 This version introduces the first step toward a full battle system, laying groundwork for enemy logic, UI elements, and future turn-based mechanics. While the UI is functional, battle logic is still under development.
+
+---
+
+## [v0.3.0-alpha] – 2025-11-03  
+⚔️ First Encounter – Battle activation logic introduced
+
+**Added**
+- Battle zone parsing from `battleZonesData` into a 2D grid (`battleZonesMap`)
+- Dynamic battle zone generation using `Boundary` objects based on map symbols
+- Collision detection between player and battle zones
+- Battle trigger logic based on overlapping area threshold
+
+---
+
+## [v0.2.1] – 2025-11-03  
+🎮 Game On – Player movement and collision system added
+
+**Added**
+- Player sprite system with directional animations (up, down, left, right)
+- Background and foreground rendering using layered `Sprite` objects
+- Collision detection system using `Boundary` class and `rectangularCollision()` logic
+- Movement controls via WASD keys with smooth camera scrolling
+- Map parsing from `collisions` array into a 2D grid (`collisionsMap`)
+- Dynamic boundary generation based on map symbols
+
+**Changed**
+- Canvas setup with fixed dimensions and white background fill
+- Sprite animation logic with frame cycling based on movement state
+
+**Fixed**
+- Placeholder for image spacing issue noted in TODO comment
+
+**Notes**
+- This version introduces core gameplay mechanics and sets the foundation for interactive map navigation
+
 
