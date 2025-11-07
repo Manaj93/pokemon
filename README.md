@@ -1,48 +1,81 @@
-# Pokémon
+# 🎮 Pokémon
 
-A 2D Pokémon-style browser game built with HTML, CSS, JavaScript, Gsap and Tiled.
+A fully playable 2D Pokémon-style browser game built with **HTML5 Canvas**, **JavaScript**, **GSAP**, and **Tiled**. Explore a tile-based world, interact with NPCs, and engage in animated turn-based battles — all in a nostalgic retro aesthetic.
 
-## 🎮 Overview
+---
 
-This project recreates a classic Pokémon-style environment using a single map and a single player character. It features:
-- A tile-based world rendered with HTML5 Canvas
-- Smooth player movement and collision detection
-- Foreground and background layers for visual depth
-- Modular class structure for sprites and boundaries
-- Battle zone detection and animated transition into battle mode
-- Battle UI with animated sprites, health bars, and attack interface
+## ✨ Game Features
+
+### 🌍 Overworld Exploration
+- Smooth player movement with directional sprites
+- Collision detection with map boundaries and objects
+- Foreground layering for immersive depth
+- Interactive NPCs with dialogue sequences
+
+### ⚔️ Battle System
+- Randomized battle zone triggers
+- Turn-based combat with animated attacks
+- Health bar UI for both player and enemy
+- Attack selection with type indicators
+- Victory and fainting transitions with sound and animation
+
+### 🔊 Audio Integration
+- Background music for map and battle scenes
+- Sound effects for attacks, hits, and victory
+- Audio transitions based on game state
+
+### 🧠 Game Architecture
+- Modular class system (`Sprite`, `Monster`, `Character`, `Boundary`)
+- Frame-controlled sprite animation
+- Scene transitions using GSAP
+- Dialogue and interaction logic
+- Reusable utility functions for collision detection
+
+---
 
 ## 🧰 Technologies Used
 
-- HTML5 Canvas
-- Vanilla JavaScript
-- CSS
-- GSAP (for battle transition animations)
-- Tiled (for map design)
+- **HTML5 Canvas** — for rendering the game world and sprites
+- **Vanilla JavaScript** — for game logic and interactivity
+- **GSAP** — for smooth animations and transitions
+- **Howler.js** — for audio playback
+- **Tiled** — for map design and layout
+
+---
 
 ## 📁 Project Structure
 
 ```
 pokemon/
 ├── index.html
-├── style.css
 ├── index.js
+├── battleScene.js
 ├── classes.js
+├── js/
+│   └── utils.js
 ├── data/
+│   ├── audio.js
+│   ├── attacks.js
+│   ├── battleZones.js
 │   ├── collisions.js
-│   └── battleZones.js
+│   ├── monsters.js
+│   ├── characters.js
 ├── img/
 │   ├── Pellet Town.png
 │   ├── foregroundObjects.png
 │   ├── playerDown.png
+│   ├── playerUp.png
 │   ├── playerLeft.png
 │   ├── playerRight.png
-│   ├── playerUp.png
 │   ├── battleBackground.png
-│   ├── draggleSprite.png
+│   ├── fireball.png
+│   ├── villager/
+│   └── oldMan/
 ```
 
-## 🚀 How to Run
+---
+
+## 🚀 Getting Started
 
 1. Clone the repository:
    ```bash
@@ -52,15 +85,23 @@ pokemon/
 
 2. Open `index.html` in your browser.
 
-## 📝 To-Dos
+3. Click anywhere to start the background music and begin exploring!
 
-- Fix player sprite spacing: remove extra transparent padding around player image
-- Refactor repetitive collision logic into a reusable helper function
-- Add sound effects and background music for immersion
-- Add turn-based actions, and win/loss conditions
+---
+
+## 📝 Future Improvements
+
+- 🔧 Refactor collision logic into reusable helpers (already started in `utils.js`)
+- 🎵 Add more sound effects and ambient music
+- 🧠 Expand battle mechanics with more attacks and status effects
+- 🗺️ Add additional maps and NPCs
+- 💬 Improve dialogue system with branching conversations
+
+---
 
 ## 📸 Credits
 
-- Map created in Tiled and exported as PNG
-- Sprites inspired by classic Pokémon assets
-
+- Map designed in **Tiled** and exported as PNG
+- Sprites inspired by classic **Pokémon** assets
+- Audio powered by **Howler.js**
+- Animation powered by **GSAP**
