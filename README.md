@@ -2,6 +2,8 @@
 
 A fully playable 2D Pokémon-style browser game built with **HTML5 Canvas**, **JavaScript**, **GSAP**, and **Tiled**. Explore a tile-based world, interact with NPCs, and engage in animated turn-based battles — all in a nostalgic retro aesthetic.
 
+[![Live Demo](https://img.shields.io/badge/Play-Demo-green)](https://manajbin.github.io/pokemon/)
+
 ---
 
 ## ✨ Game Features
